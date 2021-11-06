@@ -27,8 +27,10 @@ Lorsque s = 0.6, Le noyau est alors N = {A1, A3, A5}.
 
 La table de non discordance est inchangée mais la table de concordance est ici calculée de manière différente.
 
-Avec cette nouvelle table de concordance, A4 surclasse toutes les autres actions lorsque seuil est
-inférieur ou égal à 0.58. Dans ce cas N = {A4}.
+Avec cette nouvelle table de concordance, A4 surclasse toutes les autres actions lorsque seuil est inférieur ou égal à 0.58. Dans ce cas N = {A4}.
+
 Lorsque 0.58 < s ≤ 0.6, N = {A3, A4}.
+
 Lorsque 0.6 < s ≤ 0.8, N = {A1, A3, A4}.
+
 Lorsque 0.8 < s ≤ 0.83, N = {A1, A2, A3, A4, A5}.
