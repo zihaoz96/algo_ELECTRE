@@ -110,6 +110,7 @@ def ElectreIs(Data, poid, PreferenceThreshold, miniMax):
                     elif miniMax[k]=='Min' and Data[i][k]>=Data[j][k]:
                         if Data[i][k] - Data[j][k] < PreferenceThreshold[k]:
                             res[i][j] += (1-(Data[i][k] - Data[j][k])/PreferenceThreshold[k]) * poid[k]
+                    res[i][j] = round(res[i][j],2)
     print("La table :")
     print(res)
     return res
@@ -133,19 +134,21 @@ def findCouples(degre, tabVeto, s):
     print("Donc dans ce cas N = ", end='')
     print(N)
 
-def main():
-    # values default
-    # poid = [5,1,4,1,3,1,2]
-    # veto = [1000,5,1.5,4,2,50,2]
-    # miniMax = ['Min', 'Max', 'Min', 'Min', 'Max', 'Max', 'Max']
-    # PreferenceThreshold = []
-    # df = pd.read_csv(r'donnee.csv', header=None)
 
-    poid = [0.1,0.2,0.2,0.1,0.2,0.2]
-    veto = [45,29,550,6,4.5,4.5]
-    PreferenceThreshold = [20, 10, 200, 4, 2, 2]
-    miniMax = ['Min', 'Max', 'Min', 'Min', 'Min', 'Max']
-    df = pd.read_csv(r'test.csv', header=None)
+
+def main():
+    #values default
+    poid = [0.2,0.1,0.2,0.1,0.2,0.1,0.1]
+    veto = [2000,10,1,4,2,50,2]
+    miniMax = ['Min', 'Max', 'Min', 'Min', 'Max', 'Max', 'Max']
+    PreferenceThreshold = [1000, 5, 2, 3, 3, 30, 2]
+    df = pd.read_csv(r'donnees.csv', header=None)
+
+    #poid = [0.1,0.2,0.2,0.1,0.2,0.2]
+    #veto = [45,29,550,6,4.5,4.5]
+    #PreferenceThreshold = [20, 10, 200, 4, 2, 2]
+    #miniMax = ['Min', 'Max', 'Min', 'Min', 'Min', 'Max']
+    #df = pd.read_csv(r'test.csv', header=None)
 
     print (df)
 
