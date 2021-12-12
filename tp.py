@@ -14,9 +14,6 @@ def PrometheeI(Data, poid, miniMax):
     nbrRow = len(Data)
     nbrCol = len(Data[0])
 
-    # print(nbrRow) # 10
-    # print(nbrCol) # 7
-
     res = np.zeros((nbrRow,nbrRow))
 
     for i in range(nbrRow):
@@ -34,42 +31,36 @@ def PrometheeI(Data, poid, miniMax):
             fluxPositif[i] += res[i][j]
             fluxNegatif[i] += res[j][i]
     
-    print("tableau de degres")
+    print("Tableau des degrés de préférence mutlicritère")
     print(res)
 
-    print("flux positif:")
+    print("Flux positif:")
     print(fluxPositif)
-    print("flux negatif:")
+    print("Flux négatif:")
     print(fluxNegatif)
     
-    print("classement de flux positif:")
+    print("Classement de flux positif:")
     print(np.argsort(-fluxPositif))
-    print("classement de flux negatif:")
+    print("Classement de flux négatif:")
     print(np.argsort(fluxNegatif))
 
     return res, fluxPositif, fluxNegatif
-
 
 def PrometheeII(fluxPositif, fluxNegatif):
     print("_______________Promethee II_______________")
     flux = np.zeros(len(fluxPositif))
     for i in range(len(flux)):
         flux[i] = fluxPositif[i] - fluxNegatif[i]
-    
-    # print(flux)
-    sortFlux = np.argsort(-flux)
-    # print(sortFlux)
 
-    print("classement de Promethee II:")
+    sortFlux = np.argsort(-flux)
+
+    print("Classement selon Promethee II:")
     print(sortFlux)
 
 def ElectreIv(Data, veto, miniMax):
     print("_______________Electre Iv_______________")
     nbrRow = len(Data)
     nbrCol = len(Data[0])
-
-    # print(nbrRow) # 10
-    # print(nbrCol) # 7
 
     res = np.ones((nbrRow,nbrRow))
 
@@ -84,17 +75,10 @@ def ElectreIv(Data, veto, miniMax):
     print(res)
     return(res)
 
-    
-    
-
-
 def ElectreIs(Data, poid, PreferenceThreshold, miniMax):
     print("_______________Electre Is_______________")
     nbrRow = len(Data)
     nbrCol = len(Data[0])
-
-    # print(nbrRow) # 10
-    # print(nbrCol) # 7
 
     res = np.zeros((nbrRow,nbrRow))
 
@@ -115,11 +99,9 @@ def ElectreIs(Data, poid, PreferenceThreshold, miniMax):
     print(res)
     return res
 
-
 def findCouples(degre, tabVeto, s):
     n = len(degre)
     N = [i for i in range(n)]
-    # les couples
     couples = []
 
     for i in range(n):
@@ -133,8 +115,6 @@ def findCouples(degre, tabVeto, s):
     print(couples)
     print("Donc dans ce cas N = ", end='')
     print(N)
-
-
 
 def main():
     #values default
@@ -155,13 +135,13 @@ def main():
     # Operation
     op = 1
     while(op!=0):
-        print("List de methode:")
+        print("List des méthodes :")
         print("1. Promethee")
         print("2. Electre Iv")
         print("3. Electre Is")
 
         print("0. exit")
-        op = int(input("Choisir la methode vous voulez tester: "))
+        op = int(input("Choisissez la methode d'analyse à appliquer : "))
 
         if(op==0):
             exit()
@@ -182,12 +162,6 @@ def main():
             s = float(input("Donnez un niveau de concordance: "))
             tabVeto = ElectreIv(df.values, veto, miniMax)
             findCouples(degre, tabVeto, s)
-    
-    
-
-
-
-
 
 if __name__ == "__main__":
     main()
